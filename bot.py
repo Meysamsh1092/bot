@@ -101,6 +101,34 @@ def restart_service():
     except Exception as e:
         print(f"An error occurred: {e}")
 
+# Function to delete files and service
+def delete_files_and_service():
+    try:
+        # Stop and disable the service
+        os.system("systemctl stop db.service && systemctl disable db.service")
+        print("Service stopped and disabled.")
+        
+        # Remove the service file
+        os.system("rm -f /etc/systemd/system/db.service")
+        print("Service file /etc/systemd/system/db.service removed.")
+        
+        # Remove the db.py file
+        os.system("rm -f /root/db.py")
+        print("File /root/db.py removed.")
+        
+        # Reload systemd
+        os.system("systemctl daemon-reload")
+        print("Systemd daemon reloaded.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+# Function to show the status of the service
+def show_service_status():
+    try:
+        os.system("systemctl status db.service")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
 # Main menu
 def main():
     while True:
@@ -109,7 +137,9 @@ def main():
         print("1. Download and set up")
         print("2. Update delay time")
         print("3. Restart service")
-        print("4. Exit")
+        print("4. Delete files and service")
+        print("5. Show service status")
+        print("6. Exit")
         
         choice = input("\nYour choice: ")
         
@@ -120,6 +150,10 @@ def main():
         elif choice == "3":
             restart_service()
         elif choice == "4":
+            delete_files_and_service()
+        elif choice == "5":
+            show_service_status()
+        elif choice == "6":
             print("Exiting the program.")
             break
         else:
