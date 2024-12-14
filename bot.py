@@ -1,6 +1,25 @@
 import os
 import re
 
+# Function to clear the screen and display the logo
+def display_logo():
+    os.system("clear")  # Clear the terminal screen
+    logo = """
+\033[1;31m#########################################################\033[0m
+\033[1;31m#                                                       #\033[0m
+\033[1;31m#                      ███╗   ███╗                      #\033[0m
+\033[1;31m#                      ████╗ ████║                      #\033[0m
+\033[1;31m#                      ██╔████╔██║                      #\033[0m
+\033[1;31m#                      ██║╚██╔╝██║                      #\033[0m
+\033[1;31m#                      ██║ ╚═╝ ██║                      #\033[0m
+\033[1;31m#                      ╚═╝     ╚═╝                      #\033[0m
+\033[1;31m#                                                       #\033[0m
+\033[1;31m#                   M E Y S A M S H 1 0 9 2             #\033[0m
+\033[1;31m#########################################################\033[0m
+"""
+    print(logo)
+    print("\n")
+
 # Function to download and set up initial files and service
 def download_and_setup():
     try:
@@ -84,13 +103,14 @@ def restart_service():
 # Main menu
 def main():
     while True:
-        print("\nSelect an option:")
+        display_logo()  # Clear screen and show logo
+        print("Select an option:")
         print("1. Download and set up")
         print("2. Update delay time")
         print("3. Restart service")
         print("4. Exit")
         
-        choice = input("Your choice: ")
+        choice = input("\nYour choice: ")
         
         if choice == "1":
             download_and_setup()
@@ -103,6 +123,9 @@ def main():
             break
         else:
             print("Invalid choice. Please try again.")
+        
+        input("\nPress Enter to return to the main menu...")  # Wait for user to press Enter
+        display_logo()  # Clear screen and show logo again
 
 if __name__ == "__main__":
     main()
