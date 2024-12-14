@@ -30,7 +30,7 @@ def download_and_setup():
         # Install required packages
         os.system("apt install curl socat -y && apt install pip -y && apt install screen -y && apt install python3-pip -y")
         os.system("pip3 install python-telegram-bot && pip3 install --force-reinstall -v 'python-telegram-bot==13.5' && pip install telegram-send")
-         os.system("telegram-send --configure")
+        os.system("telegram-send --configure")
         print("Packages installed successfully.")
         
         # Set permissions for db.py
